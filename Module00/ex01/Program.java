@@ -14,7 +14,7 @@ public class Program{
 
     public static void isPrimeNumber(int enteredNumber){
         int iterations = 0;
-        int sqrtN = (int) Math.sqrt(enteredNumber);
+        int sqrtN = (int)Math.sqrt(enteredNumber);
         for (int i = 2; i <= sqrtN; i++) {
             iterations++;
             if (enteredNumber % i == 0) {
@@ -22,7 +22,7 @@ public class Program{
                 return ;
             }
         }
-        System.out.println("true " + iterations + 1);
+        System.out.println("true " + (iterations + 1));
     }
 
     public static void main(String[] args){
@@ -36,7 +36,7 @@ public class Program{
         if (enteredNumber <= 1)
         {
             System.out.println("IllegalArgument");
-            System::exit();
+            System.exit(-1);
         }
         isPrimeNumber(enteredNumber);
     }

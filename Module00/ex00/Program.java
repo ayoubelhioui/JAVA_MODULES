@@ -1,6 +1,6 @@
 package ex00;
 
-public class Program {
+class Program {
     private static int result = 0;
     public static void calculateSum(int number){
         if (number == 0)
