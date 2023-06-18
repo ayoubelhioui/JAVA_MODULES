@@ -10,7 +10,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 class FileParser{
 
-    private static Map<String, String> signatures;
+    public static Map<String, String> signatures;
     private static InputStream inputStream;
     private static String filePath;
     private static FileParser instance;
@@ -28,7 +28,7 @@ class FileParser{
         return (instance);
     }
 
-    private void readInput() throws IOException {
+    public void readFileAndParse() throws IOException {
         int i = 0;
         while (true) {
             byte[] extensionBytes = new byte[3];
@@ -43,25 +43,19 @@ class FileParser{
                 sign += savior;
                 i = inputStream.read(signPart);
             }
+            String savior = new String(signPart);
+            sign += savior;
             String signature = new String(sign).replaceAll("\n", "");
-            System.out.println("the signature is : " + signature);
             signatures.put(extension, signature);
             if (i == -1)
-            {
-                System.out.println("here");
                 break ;
-            }
         }
-        Iterator<Map.Entry<String, String>> iterator = signatures.entrySet().iterator();
-        while (iterator.hasNext())
-        {
-            Map.Entry<String, String> entry = iterator.next();
-            System.out.println(entry.getKey() + " : " + entry.getValue());
-        }
-    }
-
-    public void parse() throws IOException {
-        this.readInput();
+//        Iterator<Map.Entry<String, String>> iterator = signatures.entrySet().iterator();
+//        while (iterator.hasNext())
+//        {
+//            Map.Entry<String, String> entry = iterator.next();
+//            System.out.println(entry.getKey() + " : " + entry.getValue());
+//        }
     }
 
     protected void finalize() throws Throwable {
