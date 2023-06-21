@@ -1,7 +1,5 @@
 package CustomExceptions;
 
-class TransactionNotFoundException extends Exception {
-    TransactionNotFoundException(String message){
-        super(message);
-    }
+public class TransactionNotFoundException extends Exception {
+    public TransactionNotFoundException(String message){ super(message); }
 }

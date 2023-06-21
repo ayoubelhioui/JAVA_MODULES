@@ -1,14 +1,10 @@
-package ex03;
+package ex04;
 
+import CustomExceptions.TransactionNotFoundException;
+import CustomExceptions.UserNotFoundException;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.UUID;
-
-class TransactionNotFoundException extends Exception{
-    TransactionNotFoundException(String message){
-        super(message);
-    }
-}
 
 class TransactionLinkedList implements TransactionsList{
 
@@ -28,6 +24,7 @@ class TransactionLinkedList implements TransactionsList{
             Transaction tr = it.next();
             if (tr.getId() == id)
             {
+                System.out.println("Transaction deleted succussfully");
                 transactionsList.remove(tr);
                 return ;
             }

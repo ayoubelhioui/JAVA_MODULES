@@ -1,4 +1,5 @@
-package ex02;
+package ex04;
+import CustomExceptions.UserNotFoundException;
 
 interface UsersList{
     void add(User newUser);

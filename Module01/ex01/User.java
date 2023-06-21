@@ -6,7 +6,7 @@ class User{
     private int Balance;
 
     private User() {}
-    User(String Name, int Balance){
+    User(String Name, int Balance) {
         this.id = UserIdsGenerator.getInstance().getGeneratedId();
         this.Name = Name;
         if (Balance > 0)

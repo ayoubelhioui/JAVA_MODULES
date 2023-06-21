@@ -2,7 +2,7 @@ package ex01;
 
 class UserIdsGenerator{
 
-    private static int generatedId = 1;
+    private static int generatedId = 0;
     private static UserIdsGenerator instance;
     private UserIdsGenerator() {}
 

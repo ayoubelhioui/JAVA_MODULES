@@ -1,7 +1,7 @@
 package CustomExceptions;
 
-class IllegalTransactionException extends Exception{
-    IllegalTransactionException(String message) {
+public class IllegalTransactionException extends Exception{
+    public IllegalTransactionException(String message) {
         super(message);
     }
 }

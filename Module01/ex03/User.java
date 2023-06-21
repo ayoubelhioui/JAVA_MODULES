@@ -1,9 +1,11 @@
-package ex02;
+package ex03;
 
 class User{
     private int id;
     private String Name;
     private int Balance;
+    public TransactionsList transactionsList;
+//    public TransactioxnLinkedList transactionsList;
 
     private User() {}
     User(String Name, int Balance) {
@@ -12,6 +14,7 @@ class User{
         if (Balance > 0)
             this.Balance = Balance;
     }
+
     int getId() {
         return (this.id);
     }

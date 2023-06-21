@@ -1,4 +1,4 @@
-package ex03;
+package ex04;
 
 import java.util.UUID;
 
@@ -11,6 +11,8 @@ class Transaction{
     private UUID id;
     private User Receipent;
     private User Sender;
+
+
     private MyEnum myEnum;
     private int transferAmount;
 
@@ -18,6 +20,7 @@ class Transaction{
         if (Sender.getBalance() < transferAmount)
             System.out.println(Sender.getName() + " hasn't enough to send !");
         else {
+            this.id = UUID.randomUUID();
             this.Receipent = Receipent;
             this.Sender = Sender;
             this.myEnum = method;
@@ -32,6 +35,15 @@ class Transaction{
         if (transferAmount > 0)
             this.transferAmount = transferAmount;
     }
+
+    public MyEnum getMyEnum() {
+        return myEnum;
+    }
+
+    public void setMyEnum(MyEnum myEnum) {
+        this.myEnum = myEnum;
+    }
+
     public UUID getId() {
         return (id);
     }

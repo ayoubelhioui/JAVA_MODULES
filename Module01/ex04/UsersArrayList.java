@@ -1,12 +1,9 @@
-package ex02;
+package ex04;
 
 import java.util.ArrayList;
-
-class UserNotFoundException extends Exception{
-    public UserNotFoundException(String message){
-        super(message);
-    }
-}
+import CustomExceptions.IllegalTransactionException;
+import CustomExceptions.TransactionNotFoundException;
+import CustomExceptions.UserNotFoundException;
 
 class UsersArrayList implements UsersList{
     private static User[] Array;

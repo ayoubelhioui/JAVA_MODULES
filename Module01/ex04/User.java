@@ -1,4 +1,4 @@
-package ex03;
+package ex04;
 
 class User{
     private int id;

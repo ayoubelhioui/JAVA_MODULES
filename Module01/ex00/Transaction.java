@@ -2,6 +2,12 @@ package ex00;
 
 import java.util.UUID;
 
+
+enum MyEnum{
+    debit,
+    credit
+}
+
 class Transaction{
     private UUID id;
     private User Receipent;
@@ -9,12 +15,25 @@ class Transaction{
     private MyEnum myEnum;
     private int transferAmount;
 
+    private Transaction() {}
+    Transaction(User Receipent, User Sender, MyEnum method, int transferAmount){
+        if (Sender.getBalance() < transferAmount)
+            System.out.println(Sender.getName() + " hasn't enough to send !");
+        else {
+            this.id = UUID.randomUUID();
+            this.Receipent = Receipent;
+            this.Sender = Sender;
+            this.myEnum = method;
+            this.transferAmount = transferAmount;
+        }
+    }
 
     public int getTransferAmount() {
         return (transferAmount);
     }
     public void setTransferAmount(int transferAmount) {
-        this.transferAmount = transferAmount;
+        if (transferAmount > 0)
+            this.transferAmount = transferAmount;
     }
     public UUID getId() {
         return (id);
@@ -29,8 +48,9 @@ class Transaction{
         this.Receipent = receipent;
     }
 
-    private enum MyEnum{
-        debit,
-        crecdit
+
+    public void printTransactionInfo(){
+        System.out.println(this.Sender.getName() + " has send to " + this.Receipent.getName() + " "
+        + this.transferAmount);
     }
 }

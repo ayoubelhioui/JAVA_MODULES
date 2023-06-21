@@ -1,7 +1,8 @@
 package CustomExceptions;
+import CustomExceptions.UserNotFoundException;
 
-class UserNotFoundException extends Exception{
-    UserNotFoundException(String message) {
+public class UserNotFoundException extends Exception{
+    public UserNotFoundException(String message) {
         super(message);
     }
 }
