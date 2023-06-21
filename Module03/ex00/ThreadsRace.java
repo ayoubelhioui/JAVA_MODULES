@@ -3,8 +3,8 @@ package ex00;
 import java.util.Scanner;
 
 class ThreadsRace {
-    private Thread firstThread;
-    private Thread secondThread;
+    private Thread eggThread;
+    private Thread henThread;
     private static Scanner standardInputScanner;
     private int printingCount;
     private String sharedResource;
@@ -28,18 +28,18 @@ class ThreadsRace {
     }
 
     private void start() throws InterruptedException {
-        this.firstThread = new Thread(() -> {
+        this.eggThread = new Thread(() -> {
             for (int i = 0; i < this.printingCount; i++)
                 System.out.println("Egg");
             this.sharedResource = "Egg";
         });
-        this.secondThread = new Thread(() -> {
+        this.henThread = new Thread(() -> {
             for (int i = 0; i < this.printingCount; i++)
                 System.out.println("Hen");
             this.sharedResource = "Hen";
         });
-        this.firstThread.start();
-        this.secondThread.start();
+        this.eggThread.start();
+        this.henThread.start();
     }
 
     public void mainThreadPrinting() {
@@ -48,8 +48,8 @@ class ThreadsRace {
     }
 
     public void joinThreads() throws InterruptedException {
-        this.firstThread.join();
-        this.secondThread.join();
+        this.eggThread.join();
+        this.henThread.join();
         this.printWinner(this.sharedResource);
     }
 
