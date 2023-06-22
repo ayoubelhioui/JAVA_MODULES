@@ -2,6 +2,7 @@ package ex02;
 
 import java.util.Scanner;
 import java.util.Random;
+import java.util.Arrays;
 
 class ArrayInitializer {
     private int[] array;
@@ -30,9 +31,22 @@ class ArrayInitializer {
         return (this.arraySize);
     }
 
+    public int getThreadsCount() {
+        return (this.threadsCount);
+    }
+
+    private void generateRandomNumber() {
+        for (int i = 0; i < arraySize; i++)
+            this.array[i] = randomNumberGenertor.nextInt(100);
+    }
+
+    private void printSum() {
+        System.out.println("Sum :" + Arrays.stream(this.array).sum());
+    }
+
     public void initialize() {
         this.readInput();
-        for (int i = 0; i < arraySize; i++)
-            this.array[i] = randomNumberGenertor.nextInt(500);
+        this.generateRandomNumber();
+        this.printSum();
     }
 }
