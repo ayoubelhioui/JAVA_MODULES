@@ -2,7 +2,7 @@ package ex02;
 
 import ex02.Threads;
 
-class ThreadsManager{
+class ThreadsManager {
     private int threadsCount;
     private int array[];
     private Thread[] threads;

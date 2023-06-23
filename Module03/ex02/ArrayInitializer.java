@@ -27,15 +27,13 @@ class ArrayInitializer {
         return (this.array);
     }
 
-    public int getArraySize() {
-        return (this.arraySize);
-    }
+    public int getArraySize() { return this.arraySize; }
 
     public int getThreadsCount() {
         return (this.threadsCount);
     }
 
-    private void generateRandomNumber() {
+    private void generateRandomNumbers() {
         for (int i = 0; i < arraySize; i++)
             this.array[i] = randomNumberGenertor.nextInt(100);
     }
@@ -46,7 +44,7 @@ class ArrayInitializer {
 
     public void initialize() {
         this.readInput();
-        this.generateRandomNumber();
+        this.generateRandomNumbers();
         this.printSum();
     }
 }
