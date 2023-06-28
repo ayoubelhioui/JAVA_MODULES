@@ -6,7 +6,7 @@ class UserIdsGenerator{
     private static UserIdsGenerator instance;
     private UserIdsGenerator() {}
 
-    static UserIdsGenerator getInstance(){
+    static UserIdsGenerator getInstance() {
         if (instance == null)
             return (new UserIdsGenerator());
         return (instance);
