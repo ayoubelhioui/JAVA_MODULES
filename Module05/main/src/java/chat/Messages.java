@@ -11,6 +11,4 @@ class Messages {
     private ChatRoom room;
     private String text;
     private Date date;
-
-//    Messages()
 }
