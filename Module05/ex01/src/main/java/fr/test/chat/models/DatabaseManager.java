@@ -3,20 +3,20 @@ package fr.test.chat.models;
 import java.sql.*;
 import java.sql.DriverManager;
 import java.util.List;
+import org.postgresql.ds.PGSimpleDataSource;
 
 public class DatabaseManager{
 
-    private String url;
-    private String username;
-    private String password;
     private static DatabaseManager instance;
     private static Connection connection;
+    private static PGSimpleDataSource dataSource;
     Statement statement;
 
     public DatabaseManager() {
-        this.url = "jdbc:postgresql://localhost:5432/mydb";
-        this.username = "postgres";
-        this.password = "ayoub";
+        dataSource = new PGSimpleDataSource();
+        dataSource.setURL("jdbc:postgresql://localhost:5432/mydb");
+        dataSource.setUser("postgres");
+        dataSource.setPassword("ayoub");
     }
 
     public static DatabaseManager getInstance() {
@@ -26,8 +26,7 @@ public class DatabaseManager{
     }
 
     public void connect() throws SQLException, ClassNotFoundException {
-        Class.forName("org.postgresql.Driver");
-        connection = DriverManager.getConnection(this.url, this.username, this.password);
+        connection = dataSource.getConnection();
         System.out.println("connected");
         this.statement = connection.createStatement();
     }
