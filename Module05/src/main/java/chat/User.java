@@ -1,7 +1,6 @@
-package main.src.java.chat;
+package src.main.java.chat;
 
-import main.src.java.chat.ChatRoom;
- import java.util.List;
+import java.util.List;
 
 public class User{
     private int id;

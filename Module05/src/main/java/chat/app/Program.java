@@ -1,9 +1,10 @@
-package main.src.java.chat;
+package src.main.java.chat.app;
 
-import main.src.java.chat.DatabaseManager;
-import main.src.java.chat.SchemaFileReader;
-import main.src.java.chat.DataFileReader;
-import javax.xml.crypto.Data;
+
+import src.main.java.chat.DatabaseManager;
+import src.main.java.chat.SchemaFileReader;
+import src.main.java.chat.DataFileReader;
+
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
@@ -16,11 +17,11 @@ class Program {
             SchemaFileReader schemaFileReader = SchemaFileReader.getInstance();
             DataFileReader dataFileReader = DataFileReader.getInstance();
             databaseManager.connect();
-            schemaFileReader.readQueriesFromFile();
+            schemaFileReader.readQueries();
             queriesList = schemaFileReader.getQueriesList();
             databaseManager.executeQueries(queriesList);
             queriesList.clear();
-            dataFileReader.readQueriesFromFile();
+            dataFileReader.readQueries();
             queriesList = dataFileReader.getQueriesList();
             databaseManager.executeQueries(queriesList);
             databaseManager.disconnect();

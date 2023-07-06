@@ -1,7 +1,5 @@
-package main.src.java.chat;
+package src.main.java.chat;
 
-import main.src.java.chat.User;
-import main.src.java.chat.Messages;
 import java.util.List;
 
 class ChatRoom {

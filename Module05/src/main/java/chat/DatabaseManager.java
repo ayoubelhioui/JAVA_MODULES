@@ -1,10 +1,10 @@
-package main.src.java.chat;
+package src.main.java.chat;
 
 import java.sql.*;
 import java.sql.DriverManager;
 import java.util.List;
 
-class DatabaseManager{
+public class DatabaseManager{
 
     private String url;
     private String username;
@@ -19,9 +19,9 @@ class DatabaseManager{
         this.password = "ayoub";
     }
 
-    static DatabaseManager getInstance() {
+    public static DatabaseManager getInstance() {
         if (instance == null)
-            return (new DatabaseManager());
+            instance  = new DatabaseManager();
         return (instance);
     }
 
@@ -32,7 +32,7 @@ class DatabaseManager{
         this.statement = connection.createStatement();
     }
 
-    public void executeQueries(List<String> queries) throws SQLException{
+    public void executeQueries(List<String> queries) throws SQLException {
        for(int i = 0; i < queries.size(); i++)
            this.statement.execute(queries.get(i));
     }

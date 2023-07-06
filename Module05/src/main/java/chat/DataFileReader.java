@@ -1,4 +1,4 @@
-package main.src.java.chat;
+package src.main.java.chat;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -7,11 +7,9 @@ import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
 
-import main.src.java.chat.SqlFileReader;
+public class DataFileReader implements SqlFileReader {
 
-class DataFileReader implements SqlFileReader {
-
-    static final private String filePath = "/home/ael-hiou/IdeaProjects/JAVA_MODULES/Module05/main/src/resources/data.sql";
+    static final private String filePath = "/Users/ael-hiou/Desktop/JAVA_MODULES/Module05/main/src/resources/data.sql";
     static private BufferedReader bufferedReader;
     static private DataFileReader instance;
     private List<String> queriesList;
@@ -20,15 +18,15 @@ class DataFileReader implements SqlFileReader {
     private DataFileReader() throws FileNotFoundException {
         this.queriesList = new LinkedList<>();
         bufferedReader = new BufferedReader(new FileReader(filePath));
-}
+    }
 
-    public static DataFileReader getInstance() throws FileNotFoundException{
+    public static DataFileReader getInstance() throws FileNotFoundException {
         if (instance == null)
-            return (new DataFileReader());
+            instance  = new DataFileReader();
         return (instance);
-}
+    }
 
-    public void readQueriesFromFile() throws IOException {
+    public void readQueries() throws IOException {
         String buffer = "";
         String line;
 
