@@ -1,4 +1,4 @@
-package src.main.java.chat;
+package fr.test.chat.models;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -7,32 +7,32 @@ import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
 
-public class SchemaFileReader implements SqlFileReader {
+public class DataFileReader implements SqlFileReader {
 
-    final static private String filePath = "/Users/ael-hiou/Desktop/JAVA_MODULES/Module05/main/src/resources/schema.sql";
-    private BufferedReader bufferedReader;
-    static private SchemaFileReader instance;
+    static final private String filePath = "/Users/ael-hiou/Desktop/JAVA_MODULES/Module05/ex00/src/main/resources/data.sql";
+    static private BufferedReader bufferedReader;
+    static private DataFileReader instance;
     private List<String> queriesList;
 
-    public SchemaFileReader() throws FileNotFoundException {
+
+    private DataFileReader() throws FileNotFoundException {
         this.queriesList = new LinkedList<>();
-        this.bufferedReader = new BufferedReader(new FileReader(filePath));
+        bufferedReader = new BufferedReader(new FileReader(filePath));
     }
 
-    public static SchemaFileReader getInstance() throws FileNotFoundException {
+    public static DataFileReader getInstance() throws FileNotFoundException {
         if (instance == null)
-            instance = new SchemaFileReader();
+            instance  = new DataFileReader();
         return (instance);
     }
-    
+
     public void readQueries() throws IOException {
         String buffer = "";
         String line;
 
         while ((line = this.bufferedReader.readLine()) != null) {
             buffer += line;
-            if (line.contains(")") && line.length() == 1)
-            {
+            if (line.contains(";")) {
                 this.queriesList.add(buffer);
                 buffer = "";
             }

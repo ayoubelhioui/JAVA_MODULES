@@ -1,4 +1,4 @@
-package src.main.java.chat;
+package fr.test.chat.models;
 
 import java.sql.*;
 import java.sql.DriverManager;
@@ -25,7 +25,7 @@ public class DatabaseManager{
         return (instance);
     }
 
-    public void connect() throws SQLException, ClassNotFoundException{
+    public void connect() throws SQLException, ClassNotFoundException {
         Class.forName("org.postgresql.Driver");
         connection = DriverManager.getConnection(this.url, this.username, this.password);
         System.out.println("connected");

@@ -1,4 +1,4 @@
-package src.main.java.chat;
+package fr.test.chat.models;
 
 import java.util.List;
 

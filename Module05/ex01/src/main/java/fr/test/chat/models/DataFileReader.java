@@ -1,4 +1,4 @@
-package src.main.java.chat;
+package fr.test.chat.models;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -9,7 +9,7 @@ import java.util.List;
 
 public class DataFileReader implements SqlFileReader {
 
-    static final private String filePath = "/Users/ael-hiou/Desktop/JAVA_MODULES/Module05/main/src/resources/data.sql";
+    static final private String filePath = "/Users/ael-hiou/Desktop/JAVA_MODULES/Module05/ex00/src/main/resources/data.sql";
     static private BufferedReader bufferedReader;
     static private DataFileReader instance;
     private List<String> queriesList;

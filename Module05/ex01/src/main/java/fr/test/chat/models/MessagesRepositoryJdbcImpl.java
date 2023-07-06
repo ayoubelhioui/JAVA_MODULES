@@ -1,6 +1,7 @@
-package src.main.java.chat;
+package fr.test.chat.models;
 
 import java.util.Optional;
+import fr.test.chat.repositories.MessagesRepository;
 
 class MessageRepositoryJdbcImpl implements MessagesRepository{
 
@@ -8,6 +9,7 @@ class MessageRepositoryJdbcImpl implements MessagesRepository{
 
     }
     public Optional<Messages> findById(Long id) {
-    };
+        return Optional.of((new Messages()));
+    }
 
 }

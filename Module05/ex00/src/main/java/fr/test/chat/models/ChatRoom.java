@@ -1,8 +1,8 @@
-package src.main.java.chat;
+package fr.test.chat.models;
 
 import java.util.List;
 
-class ChatRoom {
+public class ChatRoom {
     private int id;
     private String name;
     private User owner;

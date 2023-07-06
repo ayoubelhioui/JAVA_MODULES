@@ -1,9 +1,4 @@
-package src.main.java.chat.app;
-
-
-import src.main.java.chat.DatabaseManager;
-import src.main.java.chat.SchemaFileReader;
-import src.main.java.chat.DataFileReader;
+package fr.test.chat.models;
 
 import java.io.IOException;
 import java.sql.SQLException;

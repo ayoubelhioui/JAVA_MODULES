@@ -1,9 +1,7 @@
-package src.main.java.chat;
-
+package fr.test.chat.models;
 
 import java.util.Date;
-
-class Messages {
+public class Messages {
     private int id;
     private User author;
     private ChatRoom room;
