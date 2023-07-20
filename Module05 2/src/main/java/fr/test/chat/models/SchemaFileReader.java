@@ -9,7 +9,7 @@ import java.util.List;
 
 public class SchemaFileReader implements SqlFileReader {
 
-    final static private String filePath = "/Users/ael-hiou/Desktop/Module05/src/main/resources/schema.sql";
+    final static private String filePath = "/Users/ael-hiou/Desktop/J/Module05 2/src/main/resources/schema.sql";
     private BufferedReader bufferedReader;
     static private SchemaFileReader instance;
     private List<String> queriesList;

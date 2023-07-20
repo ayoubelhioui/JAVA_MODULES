@@ -3,8 +3,9 @@ package fr.test.chat.repositories;
 import fr.test.chat.models.Messages;
 
 import java.sql.SQLException;
+import java.text.ParseException;
 import java.util.Optional;
 
 public interface MessagesRepository {
-    Optional<Messages> findById(Long id) throws SQLException;
+    Optional<Messages> findById(Long id) throws SQLException, ParseException;
 }

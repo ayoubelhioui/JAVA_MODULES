@@ -7,6 +7,7 @@ import fr.test.chat.models.*;
 import javax.sql.DataSource;
 import java.sql.Connection;
 import java.util.List;
+import java.util.Optional;
 
 public class Program {
     public static void main(String[] args) {
@@ -23,13 +24,13 @@ public class Program {
             DataSource dataSource = new HikariDataSource(config);
             Connection connection = dataSource.getConnection();
             QueryExecutor queryExecutor = new QueryExecutor(connection);
-            queryExecutor.execute(schemaQueries);
-            queryExecutor.executeUpdate(dataQueries);
-            queryExecutor.executeQuery();
+            queryExecutor.execute(schemaQueries); // executing create tables queries.
+            queryExecutor.executeUpdate(dataQueries); // executing Insert, Update, Delete queries.
 //            MessagesRepositoryJdbcImpl messagesRepositoryJdbc = new MessagesRepositoryJdbcImpl(dataSource, queryExecutor);
+//            Optional<Messages> message = messagesRepositoryJdbc.findById(9L);
         }
         catch (Exception e) {
-            System.out.println(e);
+            System.out.println(e.getMessage());
         }
     }
 }

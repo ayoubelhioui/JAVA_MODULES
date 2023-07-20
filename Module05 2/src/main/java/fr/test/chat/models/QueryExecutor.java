@@ -16,12 +16,12 @@ public class QueryExecutor {
 
     public void execute(List<String> queries) throws SQLException {
         for (String query : queries)
-            System.out.println(this.statement.execute(query));
+            this.statement.execute(query);
     }
 
     public void executeUpdate(List<String> queries) throws SQLException {
         for (String query : queries) {
-            System.out.println(this.statement.executeUpdate(query));
+            this.statement.executeUpdate(query);
         }
     }
 

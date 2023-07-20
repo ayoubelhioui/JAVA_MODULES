@@ -9,11 +9,10 @@ import java.util.List;
 
 public class DataFileReader implements SqlFileReader {
 
-    static final private String filePath = "/Users/ael-hiou/Desktop/Module05/src/main/resources/data.sql";
-    static private BufferedReader bufferedReader;
+    static final private String filePath = "/Users/ael-hiou/Desktop/J/Module05 2/src/main/resources/data.sql";
+    private BufferedReader bufferedReader;
     static private DataFileReader instance;
     private List<String> queriesList;
-
 
     private DataFileReader() throws FileNotFoundException {
         this.queriesList = new LinkedList<>();
