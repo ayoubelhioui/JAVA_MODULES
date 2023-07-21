@@ -4,7 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
 
 public class SchemaFileReader implements SqlFileReader {
@@ -15,7 +15,7 @@ public class SchemaFileReader implements SqlFileReader {
     private List<String> queriesList;
 
     private SchemaFileReader() throws FileNotFoundException {
-        this.queriesList = new LinkedList<>();
+        this.queriesList = new ArrayList<>();
         this.bufferedReader = new BufferedReader(new FileReader(filePath));
     }
 

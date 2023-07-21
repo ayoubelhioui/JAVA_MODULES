@@ -19,7 +19,7 @@ public class UserRepositoryJdbcImpl implements UserRepository {
 //
 //    }
     public Optional<User> findById(Long id) throws SQLException {
-        final String query = "SELECT * FROM \"User\" INNER JOIN chatroom ON \"User\".id = chatroom.user_id WHERE \"User\".id =" + id;
+        final String query = "SELECT * FROM \"User\" INNER JOIN Room ON \"User\".id = Room.user_id WHERE \"User\".id =" + id;
         ResultSet resultSet = this.queryExecutor.executeQuery(query);
 //        if (!resultSet.next())
 //            return (Optional.ofNullable(null));
@@ -28,6 +28,6 @@ public class UserRepositoryJdbcImpl implements UserRepository {
 //        String date = resultSet.getString("date");
 //        String text = resultSet.getString("text");
             return (Optional.of(new User()));
-//        return Optional.of(new Messages(id, author, room, text, dateFormat.parse(date)));
+//        return Optional.of(new Message(id, author, room, text, dateFormat.parse(date)));
     }
 }

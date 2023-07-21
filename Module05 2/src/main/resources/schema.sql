@@ -5,29 +5,24 @@ CREATE TABLE IF NOT EXISTS "User"
     password VARCHAR(50) NOT NULL
 )
 
-CREATE TABLE IF NOT EXISTS ChatRoom
+CREATE TABLE IF NOT EXISTS Room
 (
     id SERIAL PRIMARY KEY,
-    name VARCHAR(50) NOT NULL
+    name VARCHAR(50) NOT NULL,
+    owner INTEGER REFERENCES "User" (id)
 )
 
-CREATE TABLE IF NOT EXISTS "User_Chatroom"
+CREATE TABLE IF NOT EXISTS "User_Room"
 (
     user_id INTEGER REFERENCES "User" (id),
-    chatroom_id INTEGER REFERENCES ChatRoom (id)
+    Room_id INTEGER REFERENCES Room (id)
 )
 
-CREATE TABLE IF NOT EXISTS Messages
+CREATE TABLE IF NOT EXISTS Message
 (
     id SERIAL PRIMARY KEY,
     text VARCHAR(200) NOT NULL,
-    date date,
-    author INTEGER REFERENCES "User" (id)
+    datetime varchar(50),
+    author INTEGER REFERENCES "User" (id),
+    room INTEGER REFERENCES Room (id)
 )
-
-CREATE TABLE IF NOT EXISTS "Room_Messages"
-(
-    message_id INTEGER REFERENCES Messages(id),
-    room_id INTEGER REFERENCES ChatRoom(id)
-)
-
