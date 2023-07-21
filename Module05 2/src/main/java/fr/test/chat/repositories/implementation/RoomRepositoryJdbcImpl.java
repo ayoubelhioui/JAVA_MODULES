@@ -20,11 +20,12 @@ public class RoomRepositoryJdbcImpl implements RoomRepository {
     }
 
     public Optional<Room> findById(Long id) throws SQLException {
-        final String query = "SELECT login FROM Room INNER JOIN \"User\" ON \"User\".id = Room.owner WHERE id = " + id;
+        final String query = "SELECT * FROM Room INNER JOIN \"User\" ON \"User\".id = Room.owner WHERE Room.id = " + id;
         ResultSet resultSet = this.queryExecutor.executeQuery(query);
         if (!resultSet.next())
             return (Optional.ofNullable(null));
-        User owner = new User(resultSet.getLong("author"), resultSet.getString("login"),
+        System.out.println("here()()()");
+        User owner = new User(resultSet.getLong("owner"), resultSet.getString("login"),
                 resultSet.getString("password"), new ArrayList<>(), new ArrayList<>());
         return Optional.of(new Room(id, resultSet.getString("name"), owner, new ArrayList<>()));
     }

@@ -13,16 +13,15 @@ import java.util.ArrayList;
 import java.util.Optional;
 
 public class UserRepositoryJdbcImpl implements UserRepository {
-    private DataSource datasource;
-    private Statement statement;
     private QueryExecutor queryExecutor;
 
 //    private UserRepositoryJdbcImpl() {}
-//    public UserRepositoryJdbcImpl() {
-//
-//    }
+    public UserRepositoryJdbcImpl(QueryExecutor queryExecutor) {
+        this.queryExecutor = queryExecutor;
+    }
+
     public Optional<User> findById(Long id) throws SQLException, NotSavedSubEntityException {
-        final String query = "SELECT login FROM \"User\" WHERE id = " + id;
+        final String query = "SELECT * FROM \"User\" WHERE id = " + id;
         ResultSet resultSet = this.queryExecutor.executeQuery(query);
         if (!resultSet.next())
             return (Optional.ofNullable(null));

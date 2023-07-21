@@ -37,8 +37,8 @@ public class Program {
 //            Optional<Message> message = MessageRepositoryJdbc.findById(2L);
             User creator = new User(1L, "user", "user", new ArrayList<>(), new ArrayList<>());
             User author = creator;
-        Room room = new Room(2L, "room", creator, new ArrayList<>());
-            Message Message = new Message(null, author, room, "whatsupnigga!", LocalDateTime.now());
+            Room room = new Room(200L, "room", creator, new ArrayList<>());
+            Message Message = new Message(null, author, room, "_---------------________", LocalDateTime.now());
             MessageRepositoryJdbc.save(Message);
         }
         catch (Exception e) {

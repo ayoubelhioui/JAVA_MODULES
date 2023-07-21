@@ -74,7 +74,7 @@ public class MessageRepositoryJdbcImpl implements MessageRepository {
     public void save(Message message) throws SQLException, NotSavedSubEntityException {
         User messageOwner = message.getAuthor();
         Room messageRoom = message.getRoom();
-        if (!userRepositoryJdbc.findById(messageRoom.getId()).isPresent())
+        if (!userRepositoryJdbc.findById(messageOwner.getId()).isPresent())
             throw new NotSavedSubEntityException("The user subentity is not exist!");
         if (!roomRepositoryJdbc.findById(messageRoom.getId()).isPresent())
             throw new NotSavedSubEntityException("The room subentity is not exist!");
