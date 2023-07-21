@@ -15,10 +15,10 @@ VALUES ('Room 111', 2);
 INSERT INTO Room (name, owner)
 VALUES ('Room 12', 2);
 INSERT INTO Message (text, datetime, author, room)
-VALUES ('helloWorld', '2022-12-1 15:30:45', 1, 1);
+VALUES ('helloWorld', '2022-12-1-15:30:45', 1, 1);
 INSERT INTO Message (text, datetime, author, room)
-VALUES ('fuck you mlakhar', '2022-07-1 11:10:45', 1, 3);
+VALUES ('fuck you mlakhar', '2022-07-1-11:10:45', 1, 3);
 INSERT INTO Message (text, datetime, author, room)
-VALUES ('helloWorld', '2023-12-1 10:00:00', 2, 2);
+VALUES ('helloWorld', '2023-12-1-10:00:00', 2, 2);
 INSERT INTO Message (text, datetime, author, room)
-VALUES ('shnifiha asi mohamed', '2013-1-9 9:10:22', 1, 2);
+VALUES ('shnifiha asi mohamed', '2013-1-9-9:10:22', 1, 2);

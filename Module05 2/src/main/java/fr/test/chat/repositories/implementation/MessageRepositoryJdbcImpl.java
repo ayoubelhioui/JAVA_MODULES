@@ -1,5 +1,10 @@
-package fr.test.chat.models;
+package fr.test.chat.repositories.implementation;
 
+import fr.test.chat.exceptions.NotSavedSubEntityException;
+import fr.test.chat.models.Message;
+import fr.test.chat.models.QueryExecutor;
+import fr.test.chat.models.Room;
+import fr.test.chat.models.User;
 import fr.test.chat.repositories.MessageRepository;
 
 import javax.sql.DataSource;
@@ -20,12 +25,16 @@ public class MessageRepositoryJdbcImpl implements MessageRepository {
     private Statement statement;
     private final QueryExecutor queryExecutor;
     private static DateTimeFormatter dateFormat;
+    private static UserRepositoryJdbcImpl userRepositoryJdbc;
+    private static RoomRepositoryJdbcImpl roomRepositoryJdbc;
 
-    public MessageRepositoryJdbcImpl (DataSource dataSource, QueryExecutor queryExecutor) {
+    public MessageRepositoryJdbcImpl (DataSource dataSource, QueryExecutor queryExecutor,
+                                      UserRepositoryJdbcImpl userRepositoryJdbcs, RoomRepositoryJdbcImpl roomRepositoryJdbcs) {
         dateFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         this.queryExecutor = queryExecutor;
         this.datasource = dataSource;
-        System.out.println("connected successfully");
+        userRepositoryJdbc = userRepositoryJdbcs;
+        roomRepositoryJdbc = roomRepositoryJdbcs;
     }
 
     private void printMessageInfo(Message message) {
@@ -62,13 +71,18 @@ public class MessageRepositoryJdbcImpl implements MessageRepository {
         return Optional.of(message);
     }
 
-    public void save(Message message) throws SQLException{
-        List<String> queryList = new ArrayList<String>();
-        final String query = "INSERT INTO Message (text, date, author, room)\n" +
-                "VALUES ('" + message.getText() + "', '" + message.getDate() + "', " + message.getAuthor().getId() + ", " +
-                message.getRoom().getId() + ");";
+    public void save(Message message) throws SQLException, NotSavedSubEntityException {
+        User messageOwner = message.getAuthor();
+        Room messageRoom = message.getRoom();
+        if (!userRepositoryJdbc.findById(messageRoom.getId()).isPresent())
+            throw new NotSavedSubEntityException("The user subentity is not exist!");
+        if (!roomRepositoryJdbc.findById(messageRoom.getId()).isPresent())
+            throw new NotSavedSubEntityException("The room subentity is not exist!");
+        List<String> queryList = new ArrayList<>();
+        final String query = "INSERT INTO Message (text, datetime, author, room)\n" +
+                "VALUES ('" + message.getText() + "', '" + message.getDate() + "', " + messageOwner.getId() + ", " +
+                messageRoom.getId() + ");";
         queryList.add(query);
         this.queryExecutor.executeUpdate(queryList);
-        System.out.println(query);
     }
 }
