@@ -2,9 +2,11 @@ package ex02;
 
 class UserIdsGenerator{
 
-    private static int generatedId = 0;
+    private int generatedId;
     private static UserIdsGenerator instance;
-    private UserIdsGenerator() {}
+    private UserIdsGenerator() {
+        this.generatedId = 1;
+    }
 
     static UserIdsGenerator getInstance(){
         if (instance == null)
@@ -12,7 +14,8 @@ class UserIdsGenerator{
         return (instance);
     }
 
-    int getGeneratedId(){
-        return (++generatedId);
+    int getGeneratedId() {
+        int newId = generatedId++;
+        return (newId);
     }
 }

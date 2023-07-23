@@ -29,7 +29,6 @@ public class DataFileReader implements SqlFileReader {
         String buffer = "";
         String line;
         while ((line = this.bufferedReader.readLine()) != null) {
-            System.out.println(line);
             buffer += line;
             if (line.contains(";")) {
                 this.queriesList.add(buffer);

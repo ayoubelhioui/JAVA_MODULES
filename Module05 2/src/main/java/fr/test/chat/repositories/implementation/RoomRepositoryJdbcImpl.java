@@ -24,7 +24,6 @@ public class RoomRepositoryJdbcImpl implements RoomRepository {
         ResultSet resultSet = this.queryExecutor.executeQuery(query);
         if (!resultSet.next())
             return (Optional.ofNullable(null));
-        System.out.println("here()()()");
         User owner = new User(resultSet.getLong("owner"), resultSet.getString("login"),
                 resultSet.getString("password"), new ArrayList<>(), new ArrayList<>());
         return Optional.of(new Room(id, resultSet.getString("name"), owner, new ArrayList<>()));

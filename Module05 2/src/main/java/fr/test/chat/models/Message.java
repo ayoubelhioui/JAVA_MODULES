@@ -20,6 +20,23 @@ public class Message {
     private LocalDateTime date;
 
     private Message() { }
+
+    public void setAuthor(User author) {
+        this.author = author;
+    }
+
+    public void setRoom(Room room) {
+        this.room = room;
+    }
+
+    public void setText(String text) {
+        this.text = text;
+    }
+
+    public void setDate(LocalDateTime date) {
+        this.date = date;
+    }
+
     public Message(Long id, User author, Room room, String text, LocalDateTime date) {
         this.id = id;
         this.author = author;

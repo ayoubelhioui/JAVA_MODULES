@@ -12,6 +12,7 @@ import java.sql.Connection;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class Program {
     public static void main(String[] args) {
@@ -34,12 +35,23 @@ public class Program {
             UserRepositoryJdbcImpl userRepositoryJdbc = new UserRepositoryJdbcImpl(queryExecutor);
             MessageRepositoryJdbcImpl MessageRepositoryJdbc = new MessageRepositoryJdbcImpl(dataSource,
                     queryExecutor, userRepositoryJdbc, roomRepositoryJdbc);
-//            Optional<Message> message = MessageRepositoryJdbc.findById(2L);
-            User creator = new User(1L, "user", "user", new ArrayList<>(), new ArrayList<>());
-            User author = creator;
-            Room room = new Room(200L, "room", creator, new ArrayList<>());
-            Message Message = new Message(null, author, room, "_---------------________", LocalDateTime.now());
-            MessageRepositoryJdbc.save(Message);
+
+//            Optional<Message> message = MessageRepositoryJdbc.findById(1L);
+//            if (message.isPresent()) {
+//                Message messages = message.get();
+//                User newUser = new User(3, "nologin", "helloWorld", new ArrayList<>(), new ArrayList<>());
+//                Room newRoom = new Room(20, "Ayuub'sRoom", newUser, new ArrayList<>());
+//                messages.setText("++++++++++++++++");
+//                messages.setDate(null);
+//                messages.setAuthor(newUser);
+//                messages.setRoom(newRoom);
+//                MessageRepositoryJdbc.update(messages);
+//            }
+//            User creator = new User(1L, "user", "user", new ArrayList<>(), new ArrayList<>());
+//            User author = creator;
+//            Room room = new Room(200L, "room", creator, new ArrayList<>());
+//            Message Message = new Message(null, author, room, "_---------------________", LocalDateTime.now());
+//            MessageRepositoryJdbc.save(Message);
         }
         catch (Exception e) {
             System.out.println(e.getMessage());

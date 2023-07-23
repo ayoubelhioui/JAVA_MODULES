@@ -47,13 +47,14 @@ public class MessageRepositoryJdbcImpl implements MessageRepository {
         System.out.println(" }");
     }
 
-    private Message extractMessageInfo(ResultSet resultSet) throws SQLException, ParseException{
+    private Message extractMessageInfo(ResultSet resultSet) throws SQLException{
         User user = new User(resultSet.getLong("author"), resultSet.getString("login"),
         resultSet.getString("password"), new ArrayList<>(), new ArrayList<>());
         Room room = new Room(resultSet.getLong("room"), resultSet.getString("name"), user, new ArrayList<>());
         long id = resultSet.getLong("id");
         String date = resultSet.getString("datetime");
         String text = resultSet.getString("text");
+        System.out.println(date);
         LocalDateTime localDateTime = LocalDateTime.parse(date, dateFormat);
         return (new Message(id, user, room, text, localDateTime));
     }
@@ -63,7 +64,7 @@ public class MessageRepositoryJdbcImpl implements MessageRepository {
         ResultSet resultSet = this.queryExecutor.executeQuery(query);
         if (!resultSet.next())
         {
-            System.out.println("The User with id " + id + " is not exist !");
+            System.out.println("The User entity is not exist !");
             return (Optional.ofNullable(null));
         }
         Message message = this.extractMessageInfo(resultSet);
@@ -83,6 +84,23 @@ public class MessageRepositoryJdbcImpl implements MessageRepository {
                 "VALUES ('" + message.getText() + "', '" + message.getDate() + "', " + messageOwner.getId() + ", " +
                 messageRoom.getId() + ");";
         queryList.add(query);
+        this.queryExecutor.executeUpdate(queryList);
+    }
+
+    public void update(Message message) throws SQLException{
+        String query = "UPDATE message SET ";
+        query += message.getText().isEmpty() ? "" : "text = '" + message.getText() + "', ";
+        if (!userRepositoryJdbc.findById(message.getAuthor().getId()).isPresent())
+            throw new NotSavedSubEntityException("The user subentity is not exist!");
+        query += message.getAuthor() == null ? "" : "author = " + message.getAuthor().getId() + ", ";
+        if (!roomRepositoryJdbc.findById(message.getRoom().getId()).isPresent())
+            throw new NotSavedSubEntityException("The room subentity is not exist!");
+        query += message.getRoom() == null ? "" : "room = " + message.getRoom().getId() + ", ";
+        query += message.getDate() == null ? "" : "date = " + message.getDate() + ", ";
+        String modifiedString = query.substring(0, query.length() - 2);
+        modifiedString += " WHERE id = " + message.getId() + ";";
+        List<String> queryList = new ArrayList<>();
+        queryList.add(modifiedString);
         this.queryExecutor.executeUpdate(queryList);
     }
 }
