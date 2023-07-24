@@ -10,6 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 public class UserRepositoryJdbcImpl implements UserRepository {
@@ -27,4 +28,8 @@ public class UserRepositoryJdbcImpl implements UserRepository {
             return (Optional.ofNullable(null));
         return Optional.of((new User(id, resultSet.getString("login"), resultSet.getString("password"), new ArrayList<>(), new ArrayList<>())));
     }
+
+//    List<User> findAall(int page, int size) {
+//
+//    }
 }
