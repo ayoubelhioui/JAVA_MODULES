@@ -1,4 +1,4 @@
-package fr.test.numbers.exceptions;
+package fr.test.exceptions;
 
 public class IllegalNumberException extends Exception{
     public IllegalNumberException (String Message) {

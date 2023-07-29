@@ -1,6 +1,6 @@
 package fr.test.numbers;
 
-import fr.test.numbers.exceptions.IllegalNumberException;
+import fr.test.exceptions.IllegalNumberException;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 import org.junit.jupiter.params.provider.ValueSource;

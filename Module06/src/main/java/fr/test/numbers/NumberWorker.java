@@ -1,6 +1,6 @@
 package fr.test.numbers;
 
-import fr.test.numbers.exceptions.IllegalNumberException;
+import fr.test.exceptions.IllegalNumberException;
 
 import java.util.Scanner;
 public class NumberWorker {
